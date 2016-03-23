@@ -22,7 +22,7 @@ public class GamePanel extends JPanel
 			mpButton = new JButton("2-Players");
 			spButton = new JButton("Single-Player");
 			spPanel = new SinglePlayerPanel(controller);
-			mpPanel = new MultiPlayerPanel();
+			mpPanel = new MultiPlayerPanel(controller);
 			
 			stretchBackgroundImage();
 			buildComponents();
