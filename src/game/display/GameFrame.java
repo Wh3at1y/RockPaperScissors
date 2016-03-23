@@ -11,7 +11,7 @@ public class GameFrame extends JFrame
 		public GameFrame(GameController controller)
 		{
 			this.controller = controller;
-			panel = new GamePanel();
+			panel = new GamePanel(controller);
 			buildFrame();
 		}
 		
@@ -23,5 +23,10 @@ public class GameFrame extends JFrame
 			this.setSize(600,500);
 			this.setContentPane(panel);
 			this.setVisible(true);
+		}
+		
+		public GamePanel getPanel()
+		{
+			return panel;
 		}
 	}

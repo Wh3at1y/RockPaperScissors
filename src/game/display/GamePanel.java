@@ -1,5 +1,6 @@
 package game.display;
 
+import game.controller.GameController;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,19 +15,14 @@ public class GamePanel extends JPanel
 		private SinglePlayerPanel spPanel;
 		private MultiPlayerPanel mpPanel;
 		
-		public GamePanel()
+		public GamePanel(GameController controller)
 		{
 			layout = new SpringLayout();
 			background = new JLabel();
 			mpButton = new JButton("2-Players");
 			spButton = new JButton("Single-Player");
-			spPanel = new SinglePlayerPanel();
-			
+			spPanel = new SinglePlayerPanel(controller);
 			mpPanel = new MultiPlayerPanel();
-			layout.putConstraint(SpringLayout.NORTH, mpPanel, 0, SpringLayout.SOUTH, mpButton);
-			layout.putConstraint(SpringLayout.WEST, mpPanel, 0, SpringLayout.WEST, this);
-			layout.putConstraint(SpringLayout.SOUTH, mpPanel, 0, SpringLayout.SOUTH, this);
-			layout.putConstraint(SpringLayout.EAST, mpPanel, 0, SpringLayout.EAST, this);
 			
 			stretchBackgroundImage();
 			buildComponents();
@@ -93,5 +89,20 @@ public class GamePanel extends JPanel
 			layout.putConstraint(SpringLayout.WEST, spPanel, 0, SpringLayout.WEST, this);
 			layout.putConstraint(SpringLayout.SOUTH, spPanel, 0, SpringLayout.SOUTH, this);
 			layout.putConstraint(SpringLayout.EAST, spPanel, 0, SpringLayout.EAST, this);
+			layout.putConstraint(SpringLayout.NORTH, mpPanel, 0, SpringLayout.SOUTH, mpButton);
+			layout.putConstraint(SpringLayout.WEST, mpPanel, 0, SpringLayout.WEST, this);
+			layout.putConstraint(SpringLayout.SOUTH, mpPanel, 0, SpringLayout.SOUTH, this);
+			layout.putConstraint(SpringLayout.EAST, mpPanel, 0, SpringLayout.EAST, this);
 		}
+
+		public JButton getSpButton()
+			{
+				return spButton;
+			}
+
+		public SinglePlayerPanel getSpPanel()
+			{
+				return spPanel;
+			}
+		
 	}
